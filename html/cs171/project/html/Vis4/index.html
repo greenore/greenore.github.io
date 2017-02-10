@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CS171 - Team 5 prototype Vis 4</title>
+
+  <!-- Load Google Font -->
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,400italic,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/leaflet.css" />
+  <link href='css/MarkerCluster.css' rel='stylesheet' />
+  <link href='css/MarkerCluster.Default.css' rel='stylesheet' />
+  <link href="css/bootstrap-switch.css" rel="stylesheet">
+  <link href="css/bootstrap-slider.css" rel="stylesheet">
+
+
+
+</head>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <!-- Headline -->
+      <h1>EV's - Charger Network in the US
+        <span class="divider">|</span>
+          <span class="sub-headline">
+            <span id="charger-count"></span> Charger locations
+          </span>
+      </h1>
+      <div class="row">
+        <div class="col-md-6 " >
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="input-group">
+              <span class="input-group-btn">
+                <button class="btn btn-default" id = 'locationSearch' type="button">Search...</button>
+              </span>
+                <input type="text" id = 'locationSearchTerm' class="form-control" placeholder="Search">
+              </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+          </div>
+          <div class="row">
+
+            <div class="col-lg-6" >
+              <div class="checkbox" >
+                <span class="input-group-addon" id="basic-addon1">Draw range circle in km</span>
+                <input type="checkbox" name="range-checkbox" id="rangeCheck" checked>
+                <input id="rangeSlider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="1000" data-slider-step="1" data-slider-value="50"/>
+              </div>
+              <div>
+                <div id = 'filterButtons'> </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-6 " id = 'chargerDist'></div>
+      </div>
+      <div><br></div>
+      <!-- Visualization placeholders -->
+      <div id="charger-map"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Load JS libraries -->
+<script src="js/jquery.min.js"></script>
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-switch.js"></script>
+<script src="js/bootstrap-slider.min.js"></script>
+
+
+<script src="js/leaflet.js"></script>
+<script src='js/leaflet.markercluster.js'></script>
+<script src="js/leaflet.featuregroup.subgroup-src.js"></script>
+<script src="js/Leaflet.MakiMarkers.js"></script>
+<script src="js/d3.min.js"></script>
+
+
+<!-- Visualization objects -->
+<script src="js/chargerMap.js"></script>
+<script src="js/chargerDistr.js"></script>
+
+
+<!-- Load data, create visualizations -->
+<script src="js/main.js"></script>
+<script src="js/handler.js"></script>
+
+</body>
+</html>
