@@ -949,7 +949,14 @@ body.landing #skel-layers-wrapper {
 /* Banner */
 
 #banner {
-    padding: 16em 0 13em 0;
+        padding: 16em 0 13em 0;
+}
+
+#banner2 {
+        padding: 9em 0 0 0;
+}
+
+.banner {
     background-attachment: fixed;
     background-image: url("../images/basel-rhine-river1.jpg");
     background-position: center top;
@@ -957,23 +964,23 @@ body.landing #skel-layers-wrapper {
     line-height: 1.75;
     text-align: center;
 }
-#banner:last-child {
+.banner:last-child {
     margin-bottom: 0;
 }
-#banner h2 {
+.banner h2 {
     color: #ffffff;
     display: inline-block;
     font-size: 3.5em;
     line-height: 1.35;
     margin-bottom: 0.5em;
 }
-#banner p {
+.banner p {
     color: #aaa;
     font-size: 1.5em;
     margin-bottom: 1.75em;
     text-transform: uppercase;
 }
-body.is-touch #banner {
+body.is-touch .banner {
     background-attachment: scroll;
 }
 
