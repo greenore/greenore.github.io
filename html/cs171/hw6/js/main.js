@@ -1,62 +1,179 @@
-// Will be used to the save the loaded JSON data
-var allData = [];
+// DATASETS
 
-// Date parser to convert strings to date objects
-var parseDate = d3.time.format("%Y").parse;
+// Global variable with 1198 pizza deliveries
+console.log(deliveryData);
 
-// Set ordinal color scale
-var colorScale = d3.scale.category20();
+// Access list
+function returnList(data, objName) {
+    var x = [];
 
-// Variables for the visualization instances
-var areachart, timeline;
+    for (i = 0; i < data.length; i++) {
+        x[i] = data[i][objName]
+    }
 
-// Start application by loading the data
-loadData();
-
-function loadData() {
-    d3.json("data/uk-household-purchases.json", function (error, jsonData) {
-        if (!error) {
-            allData = jsonData;
-
-            // Convert Pence Sterling (GBX) to USD and years to date objects
-            allData.layers.forEach(function (d) {
-                for (var column in d) {
-                    if (d.hasOwnProperty(column) && column != "Year") {
-                        d[column] = parseFloat(d[column]) * 1.481105 / 100;
-                    } else if (d.hasOwnProperty(column) && column == "Year") {
-                        d[column] = parseDate(d[column].toString());
-                    }
-                }
-            });
-
-            allData.years.forEach(function (d) {
-                d.Expenditures = parseFloat(d.Expenditures) * 1.481105 / 100;
-                d.Year = parseDate(d.Year.toString());
-            });
-
-
-            // Update color scale (all column headers except "Year")
-            // We will use the color scale later for the stacked area chart
-            colorScale.domain(d3.keys(allData.layers[0]).filter(function (d) {
-                return d != "Year";
-            }))
-
-            createVis();
-        }
-    });
+    return x
 }
 
-function createVis() {
-    // TO-DO: Instantiate visualization objects here
-    areachart = new StackedAreaChart("stacked-area-chart", allData.layers);
-    timeline = new Timeline("timeline", allData.years);
-}
+console.log(returnList(deliveryData, "delivery_id"));
+console.log(returnList(deliveryData, "date"));
+console.log(returnList(deliveryData, "area"));
+console.log(returnList(deliveryData, "price"));
+console.log(returnList(deliveryData, "count"));
+console.log(returnList(deliveryData, "driver"));
+console.log(returnList(deliveryData, "delivery_time"));
+console.log(returnList(deliveryData, "temperature"));
+console.log(returnList(deliveryData, "drinks_ordered"));
+console.log(returnList(deliveryData, "order_type"));
 
-function brushed() {
-    // TO-DO: React to 'brushed' event
-    areachart.x.domain(timeline.brush.empty() ? timeline.xContext.domain() : timeline.brush.extent());
+
+// Global variable with 200 customer feedbacks
+console.log(feedbackData);
+console.log(feedbackData.length);
+console.log(returnList(feedbackData, "punctuality"));
+console.log(returnList(feedbackData, "quality"));
+console.log(returnList(feedbackData, "delivery_id"));
+console.log(returnList(feedbackData, "wrong_pizza"));
+
+// FILTER DATA, THEN DISPLAY SUMMARY OF DATA & BAR CHART
+createSummary(deliveryData, feedbackData);
+
+function createSummary(data1, data2) {
     
-    // Update focus chart (detailed information)
-    areachart.wrangleData();
+    // Math
+    //-----
+    // Number of pizza deliveries 
+    var numberDeliveries = data1.length;
 
+    // Number of pizza deliveries (Count)
+    var totalPizza = 0;
+    for (i = 0; i < data1.length; i++) {
+        totalPizza += data1[i].count;
+    }
+
+    // Average delivery time
+    var totalDeliveryTime = 0;
+    for (i = 0; i < data1.length; i++) {
+        totalDeliveryTime += data1[i].delivery_time;
+    }
+    var meanDelieveryTime = totalDeliveryTime / numberDeliveries;
+
+    // Total sales in USD
+    var totalSales = 0;
+    for (i = 0; i < data1.length; i++) {
+        totalSales += data1[i].price;
+    }
+
+    // Number of all feedback entries
+    var numberFeedbackEntries = data2.length;
+
+    // Number of feedback entries per quality category: low, medium, high
+    var qualityLow = data2.filter(function (value) {
+        return value.quality === "low";
+    });
+    var qualityMedium = data2.filter(function (value) {
+        return value.quality === "medium";
+    });
+    var qualityHigh = data2.filter(function (value) {
+        return value.quality === "high";
+    });
+
+    // HTML Txt
+    //---------
+    var htmlTxt = "<h4>Dataset Summary</h4>";
+
+    htmlTxt += "<table class='mytable highlight'>"
+    htmlTxt += "<tr><th>Delivery Data</th>"
+    htmlTxt += "<th>Feedback Data</th></tr>"
+
+    htmlTxt += "<tr><td>Number of deliveries: " + numberDeliveries + " </td>"
+    htmlTxt += "<td>Number of feedbacks: " + numberFeedbackEntries + "</td></tr>"
+
+    htmlTxt += "<tr><td>Number of pizzas: " + totalPizza + "</td>"
+    htmlTxt += "<td>Low quality entries: " + qualityLow.length + "</td></tr>"
+
+    htmlTxt += "<tr><td>Average delivery time: " + Math.round(meanDelieveryTime) + "</td>"
+    htmlTxt += "<td>Medium quality entries: " + qualityMedium.length + "</td></tr>"
+
+    htmlTxt += "<tr><td>Total sales: " + Math.round(totalSales) + " $</td>"
+    htmlTxt += "<td>High quality entries: " + qualityHigh.length + "</td></tr>"
+
+    htmlTxt += "</tr></table></div>"
+
+    document.getElementById("text-area").innerHTML = htmlTxt
 }
+
+// Barchart
+createVisualization(deliveryData);
+
+function createVisualization(data) {
+    renderBarChart(data);
+}
+
+// dataManipulation
+function dataManipulation() {
+    var delivery = deliveryData;
+    var feedback = feedbackData;
+
+    var selectedBox1 = document.getElementById("delivery-area");
+    var selectedBox2 = document.getElementById("order-type");
+
+    var selectedValue1 = selectedBox1.options[selectedBox1.selectedIndex].value;
+    var selectedValue2 = selectedBox2.options[selectedBox2.selectedIndex].value;
+
+    // Filter category
+    if (selectedValue1 != "All") {
+        delivery = delivery.filter(function (value) {
+            return value.area.toLowerCase() === selectedValue1.toLowerCase();
+        });
+
+    }
+
+    if (selectedValue2 != "All") {
+        delivery = delivery.filter(function (value) {
+            return value.order_type.toLowerCase() === selectedValue2.toLowerCase();
+        });
+    }
+
+    
+    feedback = findMultibleIds(feedback, "delivery_id", returnList(delivery, "delivery_id"));
+
+    createVisualization(delivery);
+    createSummary(delivery, feedback);
+}
+
+
+// Find single ID in data
+function findId(data, idVarName, idToLookFor) {
+
+    for (var i = 0; i < data.length; i++) {
+        if (data[i][idVarName] == idToLookFor) {
+            return (data[i]);
+        }
+    }
+}
+
+// Find multible ID's in data
+function findMultibleIds(data, idVarName, idsToLookFor) {
+    var item = [];
+
+    for (var i = 0; i < idsToLookFor.length; i++) {
+        if (typeof findId(data, idVarName, idsToLookFor[i]) != "undefined") {
+            item.push(findId(data, idVarName, idsToLookFor[i]));
+        }
+    }
+    
+    return (item)
+}
+
+
+/* ************************************************************
+ *
+ * ADD YOUR CODE HERE
+ * (accordingly to the instructions in the HW2 assignment)
+ * 
+ * 1) Filter data
+ * 2) Display key figures
+ * 3) Display bar chart
+ * 4) React to user input and start with (1)
+ *
+ * ************************************************************/

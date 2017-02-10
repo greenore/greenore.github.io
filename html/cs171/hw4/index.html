@@ -1,19 +1,55 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <title>CS171 - Lab 6</title>
 
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CS171 - Homework 4</title>
 
-        <h1>Force-Directed Graph</h1>
+    <!-- Load Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,400italic,700' rel='stylesheet' type='text/css'>
 
-        <div id="chart-area"></div>
-        
-        <script src="js/d3.min.js"></script>
-        <script src="js/activity1.js"></script>
-    </body>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- Headline -->
+                <h1>Hubway - Bike Sharing in Boston 
+          <span class="divider">|</span>
+          <span class="sub-headline">
+            <span id="station-count"></span> Stations
+          </span>
+        </h1>
+
+                <!-- Visualization placeholders -->
+                <div id="station-map"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Load JS libraries -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/queue.min.js"></script>
+    <script src="js/leaflet.js"></script>
+
+    <!-- Visualization objects -->
+    <script src="js/stationMap.js"></script>
+
+    <!-- Load data, create visualizations -->
+    <script src="js/main.js"></script>
+</body>
+
 </html>

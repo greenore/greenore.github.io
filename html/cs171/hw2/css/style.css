@@ -1,24 +1,8 @@
-/* AREA-CHART */
-
-svg {
-    border: 1px solid rgba(88, 88, 88, 0.38);
-    background: rgba(211, 211, 211, 0.36);
+.node {
+    stroke: black;
+    stroke-width: 1.5px;
 }
-.dot {
-    fill: #707086;
-    shape-rendering: crispEdges;
-}
-.coffee {
-    fill: black;
-    shape-rendering: crispEdges;
-}
-.tea {
-    fill: brown;
-    shape-rendering: crispEdges;
-}
-
-
-.text {
-    fill: black;
-    shape-rendering: crispEdges;
+.link {
+    stroke: #999;
+    stroke-opacity: .6;
 }
