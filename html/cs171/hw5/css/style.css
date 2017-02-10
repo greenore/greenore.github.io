@@ -1,0 +1,14 @@
+path {
+    stroke: white;
+    stroke-width: 0.5px;
+    fill: grey;
+}
+
+.circle {
+    fill: rgb(198, 49, 49);
+}
+
+
+body {
+    background-color: rgba(75, 35, 35, 0.06);
+}
