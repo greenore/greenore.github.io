@@ -1080,3 +1080,5 @@ body.is-touch .wrapper.style3 {
     width: 4px;
     background: #d7e4ed;
 }
+
+#loadOverlay{display: none;}
