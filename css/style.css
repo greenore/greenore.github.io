@@ -8,6 +8,14 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
 
+.no-wrap{
+    overflow:hidden;
+}
+
+.float {
+    width: 10em;
+    float: left;
+}
 
 /* Basic */
 body {
@@ -497,6 +505,16 @@ input[type="radio"] + label:before {
 .image.rounded img {
     height: 200px;
     width: 200px;
+    border: solid 0.5em rgba(144, 144, 144, 0.25);
+    border-radius: 100%;
+}
+
+.image.rounded2 {
+    border-radius: 100%;
+}
+.image.rounded2 img {
+    height: 280px;
+    width: 280px;
     border: solid 0.5em rgba(144, 144, 144, 0.25);
     border-radius: 100%;
 }
