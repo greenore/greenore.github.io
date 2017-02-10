@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CS171 - Final Project</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/vis2.css">
+    <link rel="stylesheet" href="css/vis3.css">
+</head>
+
+<body>
+
+    <!-- New Header -->
+    <div class="header">
+        <div class="title">
+            <h1>The U.S. emits more greenhouse gas per capita than any other nation.</h1>
+            <h3>Approximately one third of the CO2 emission come from the transportation system.</h3>
+            <h5>Could you change this by driving a different car?</h5>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="col-md-12">
+            <h2>What is this all about?</h2>
+            <p>This page takes a deep dive into the possibilities and options of electric vehicle usage in the US. That means it gives a general overview about electric vehicle technologies and how the environment can benefit from using it.</p>
+
+            <p>The goal is to increase your knowledge about this topic and to guide you through the various aspects. The aim is to help you forming an opinion about this new technology.</p>
+        </div>
+
+        <div class="col-md-12">
+            <h2>Why electric vehicles?</h2>
+            <div class="col-md-12">
+                <blockquote>
+                    Over their lifetime, battery electric vehicles produce far less global warming pollution than their gasoline counterparts and they’re getting cleaner.
+                    <cite>Union of Concerned Scientists</cite>
+                </blockquote>
+            </div>
+
+            <p>Electric cars and trucks are powered by electricity, which as an energy source is cleaner and cheaper than oil. Electric vehicles are also practical: According to the Union of Concerned Scientist 4 out of 10 U.S. households could use a battery-electric or plug-in electric vehicle, and all households could use a hybrid-electric vehicle. Doing so would save drivers billions in fuel costs and greatly reduce the amount of global warming pollution we emit.</p>
+        </div>
+
+        <div class="col-md-12">
+            <h2>Why should you care?</h2>
+
+            <iframe width="100%" height="630px" src="https://www.youtube.com/embed/4yqIjShoW6U" frameborder="0" allowfullscreen></iframe>
+
+        </div>
+
+
+        <div class="col-md-12">
+            <h2>What types of electric vehicles exist?</h2>
+
+            <p>A <strong>hybrid electric vehicle (HEV)</strong> is a type of hybrid vehicle and electric vehicle that combines a conventional internal combustion engine (ICE) propulsion system with an electric propulsion system. The presence of the electric powertrain is intended to achieve either better fuel economy than a conventional vehicle or better performance.
+                <a href="https://en.wikipedia.org/wiki/Hybrid_electric_vehicle">(Learn more ...)</a>
+            </p>
+
+            <p>A <strong>plug-in hybrid electric vehicle (PHEV)</strong>, also known as a plug-in hybrid, is a hybrid electric vehicle with rechargeable batteries that can be restored to full charge by connecting a plug to an external electric power source. A PHEV shares the characteristics of both a conventional hybrid electric vehicle, having an electric motor and an internal combustion engine; and of an all-electric vehicle, also having a plug to connect to the electrical grid. PHEVs have a much larger all-electric range as compared to conventional gasoline-electric hybrids, and also eliminate the "range anxiety" associated with all-electric vehicles, because the combustion engine works as a backup when the batteries are depleted.
+                <a href="https://en.wikipedia.org/wiki/Hybrid_electric_vehicle#Plug-in_hybrids_.28PHEVs.29">(Learn more ...)</a> </p>
+
+            <p>An <strong>all-electric vehicle, battery electric vehicle (BEV)</strong> or <strong>battery-only electric vehicle (BOEV)</strong> is a type of electric vehicle (EV) that uses chemical energy stored in rechargeable battery packs. BEVs use electric motors and motor controllers instead of internal combustion engines for propulsion. They derive all power from battery packs and thus have no internal combustion engine, fuel cell, or fuel tank.
+                <a href="https://en.wikipedia.org/wiki/Battery_electric_vehicle">(Learn more ...)</a></p>
+        </div>
+
+
+        <div class="col-md-12">
+            <h2>Will the environment benefit from driving an electric car? </h2>
+
+            <p>See how your state generate its electricity (green - renewable, brown - conventional) and what that means for the CO2 equivalent of electric vehicles. (CO2 output per vehicle annual data to inform the choice for selection.</p>
+        </div>
+
+        <div id="container">
+            <!-- Select box to choose the ranking type -->
+            <div class="col-md-12">
+                <!-- Parent container for the visualization -->
+                <div class="row">
+                    <iframe name="iframe" id="youriframe" src="html/vis1/index.html" height=600px width=98% scrolling=no frameborder=no></iframe>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-12">
+            <h2>Already eyeing one?</h2>
+
+            <p>Compare electric vehicles by their fuel economy and dive into the model variety of all those manufacturers. The larger the square, the further you can drive with the same charge. The darker the color, the bigger your engine is going to be. (You can click on the treemap!)</p>
+            
+            <p>This visualization also provides the mechanical/electrical data as well as the the millage, capacity/size of the motor, image, and the price of one’s interested vehicle.</p>
+            
+            <p>When clicking on the nodes or a car a tree unfolds which indicates what are the best selling cars. The larger the size the higher the number of sales.</p>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <h2>Fuel Economy of Electric Cars</h2>
+
+                </div>
+                <div class="col-md-6">
+
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="ranking-type" id="chart_text">Chart Data:</label>
+                            <select class="form-control" id="selected-variable" onchange="createVisTree(nested_data_tree)">
+                                <option value="Electric">Fuel Economy for Electric Cars</option>
+                                <option value="Hybrid Electric">Fuel Economy for Hybrid Electric Cars</option>
+                                <option value="Plug-in Hybrid Electric">Fuel Economy for Plug-in Hybrids Electric Cars</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+            <div class="col-md-6">
+                <div class="visArea" id="myTreemap"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="visArea" id="car_info"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="visArea" id="treediagram"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <h2>1.21 gigawatts... Only (Doc’s) Deloreans need so much electricity!</h2>
+
+            <p> This map will give you an idea where to charge your next electric car. (This visualization introduces the type of connector requires for the EV’s and the range require for one’s destination -- plan ahead for the trip, as in what type connector, distance, location availability etc…..)
+            </p>
+        </div>
+
+        <div class="row">
+            <iframe name="iframe" id="youriframe3" src="html/Vis4/index.html" height=900px width=98% scrolling=no frameborder=no></iframe>
+        </div>
+
+
+        <div class="col-md-12">
+            <h2>What is the source material?</h2>
+
+            <p>The primary data source is http://www.afdc.energy.gov/data/ from the US Department of Energy. Furthermore, the API provided by http://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/ was used. We also used a video from the Union of Concerned Scientists (https://www.youtube.com/embed/4yqIjShoW6U). The car images are taken from the company websites. The header image is taken from http://jawallpapers.com and touched up with gimp.</p>
+        </div>
+
+    </div>
+    <!-- Load JS libraries -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/queue.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/d3-tip.js"></script>
+    <script src="js/colorbrewer.js"></script>
+
+    <!-- Individual scripts -->
+    <script src="js/handler.js"></script>
+    <script src="js/treemap.js"></script>
+    <script src="js/treediagram.js"></script>
+    <script src="js/salesNumbers.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>

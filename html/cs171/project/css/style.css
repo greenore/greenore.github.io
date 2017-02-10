@@ -1,0 +1,134 @@
+/* Main HTML */
+
+.btn {
+    border: 0px solid transparent;
+    border-color: none;
+    color: black
+    /* this was 1px earlier */
+}
+
+body,
+html {
+    font-family: 'Helvetica', sans-serif;
+    min-width: 679px;
+    font-size: 1.8vh;
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    color: #ffffff;
+}
+
+p {
+    font-size: 1em;
+}
+/* Header */
+
+.header {
+    background-image: url("../img/header.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #222;
+    min-height: 100vh;
+}
+
+.title {
+    top: 21%;
+    left: 20%;
+    position: absolute;
+    text-align: left;
+    text-shadow: #000000 0 0 1em;
+    color: white;
+    width: 60%;
+    z-index: 999;
+}
+
+.title > h1 {
+    font-size: 4em;
+}
+
+.title > h3 {
+    font-size: 3em;
+}
+
+.title > h5 {
+    font-size: 2em;
+}
+
+#header-background {
+    top: 20%;
+    left: 18%;
+    position: absolute;
+    text-align: left;
+    text-shadow: #ffffff 0 0 14px;
+    color: white;
+    width: 64%;
+    height: 60%;
+    background-color: black;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.mytable {
+    font-size: 0.7em;
+    width: 200px;
+    table-layout: auto;
+    white-space: nowrap;
+}
+
+th, td {
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 200px;
+}
+
+.tooltip-img{
+    width: 200px;
+    height: 150px;
+    padding-right: 5px;
+    padding-left: 5px;
+    z-index:10;
+    padding:10px;
+    -moz-box-shadow:0px 0px 7px #000000;
+    -webkit-box-shadow:0px 0px 7px #000000;
+    box-shadow:0px 0px 7px #000000;
+    -webkit-border-radius: 8px;
+}
+/* Blockquote */
+
+blockquote {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    width: 600px;
+    margin: 0.25em 0;
+    padding: 0.25em 40px;
+    line-height: 1.45;
+    position: relative;
+    border-color: #222;
+    color: white;
+}
+
+blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 100px;
+    position: absolute;
+    left: -15px;
+    top: -20px;
+    color: #7a7a7a;
+}
+
+blockquote cite {
+    color: #999999;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+blockquote cite:before {
+    content: "\2014 \2009";
+}
+
