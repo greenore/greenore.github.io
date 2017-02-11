@@ -1,10 +1,9 @@
-...
 title: Tim Hagmann - Website
 description: Personal data science website
 url: https://greenore.github.io
 author: Tim Hagmann
 twitter:
-    username: timhagmann
+  username: timhagmann
 logo: /images/advanced_data_science.jpg
 social:
   name: Tim Hagmann
@@ -16,4 +15,3 @@ social:
     - https://github.com/greenore
 gems:
   - jekyll-seo-tag
-...
