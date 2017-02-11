@@ -844,7 +844,7 @@ body.landing #skel-layers-wrapper {
     line-height: 4.4em;
     position: fixed;
     text-transform: uppercase;
-    top: 0;
+    top: -10px;
     width: 100%;
     z-index: 10000;
 }
