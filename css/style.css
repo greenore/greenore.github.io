@@ -500,24 +500,15 @@ input[type="radio"] + label:before {
     width: 100%;
     height: auto;
 }
-.image.rounded {
-    border-radius: 100%;
-}
 .image.rounded img {
-    height: 12em;
     width: 12em;
     border: solid 0.5em rgba(144, 144, 144, 0.25);
-    border-radius: 100%;
-}
-
-.image.rounded2 {
-    border-radius: 100%;
+    border-radius: 50%;
 }
 .image.rounded2 img {
-    height: 19em;
     width: 19em;
     border: solid 0.5em rgba(144, 144, 144, 0.25);
-    border-radius: 100%;
+    border-radius: 50%;
 }
 .image.captioned {
     border-radius: 0;
