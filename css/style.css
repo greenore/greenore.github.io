@@ -511,7 +511,7 @@ input[type="radio"] + label:before {
     border-radius: 50%;
 }
 .image.rounded3 img {
-    width: 23em;
+    width: 25em;
     border: solid 0.5em rgba(144, 144, 144, 0.25);
     border-radius: 50%;
 }
